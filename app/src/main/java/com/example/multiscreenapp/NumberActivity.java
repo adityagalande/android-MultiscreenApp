@@ -19,40 +19,21 @@ public class NumberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number);
-        ArrayList<String> numbers = new ArrayList<String>();
-        numbers.add("One");
-        numbers.add("Two");
-        numbers.add("Three");
-        numbers.add("Four");
-        numbers.add("Five");
-        numbers.add("Six");
-        numbers.add("Seven");
-        numbers.add("Eight");
-        numbers.add("Nine");
-        numbers.add("Ten");
-        numbers.add("Eleven");
-        numbers.add("Twelve");
-        numbers.add("Thirteen");
-        numbers.add("Fourteen");
-        numbers.add("Fifteen");
-        numbers.add("Sixteen");
-        numbers.add("Seventeen");
-        numbers.add("Eightteen");
-        numbers.add("Ninteen");
-        numbers.add("Twenty");
+        ArrayList<word> numbers = new ArrayList<word>();
+        numbers.add(new word("One", "lutti"));
+        numbers.add(new word("Two", "otiiko"));
+        numbers.add(new word("Three", "tolookosu"));
+        numbers.add(new word("Four", "oyyisa"));
+        numbers.add(new word("Five", "massokka"));
+        numbers.add(new word("Six", "temmokka"));
+        numbers.add(new word("Seven", "kenekaku"));
+        numbers.add(new word("Eight", "kawinta"));
+        numbers.add(new word("Nine", "wo'e"));
+        numbers.add(new word("Ten", "na'aacha"));
 
         ListView listView = (ListView) findViewById(R.id.numberView);
-        ArrayAdapter<String> numArray = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, numbers);
+        wordAdapter numArray = new wordAdapter(this, numbers);
         listView.setAdapter(numArray);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(NumberActivity.this, "Selected position " + (position + 1) + " " + numbers.get(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText(NumberActivity.this, "The selected position " + (position + 1) + " " + ((TextView) view).getText().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
     }
 }
