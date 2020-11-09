@@ -20,13 +20,13 @@ public class wordAdapter extends ArrayAdapter<word> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_item_layout, parent, false);
         }
-        word currentAndroidFlavor = getItem(position);
+        word currentAndroidWord = getItem(position);
 
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.defaultTextView);
-        defaultTextView.setText(currentAndroidFlavor.getdefaultTranslation());
+        defaultTextView.setText(currentAndroidWord.getdefaultTranslation());
 
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwokTextView);
-        miwokTextView.setText(currentAndroidFlavor.getMiwokTranslationTranslation());
+        miwokTextView.setText(currentAndroidWord.getMiwokTranslationTranslation());
 
         return listItemView;
     }
