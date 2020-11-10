@@ -16,18 +16,21 @@ public class wordAdapter extends ArrayAdapter<word> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        //Get the object located at this position
+        word itemPosition = getItem(position);
+        //Cheak if existing view is reused, Otherwise create the view
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.custom_item_layout, parent, false);
         }
-        word currentAndroidWord = getItem(position);
 
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.defaultTextView);
-        defaultTextView.setText(currentAndroidWord.getdefaultTranslation());
+        defaultTextView.setText(itemPosition.getdefaultTranslation());
 
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwokTextView);
-        miwokTextView.setText(currentAndroidWord.getMiwokTranslationTranslation());
+        miwokTextView.setText(itemPosition.getMiwokTranslationTranslation());
 
+        //return the whole listItemView layout (contaning two textviews)
         return listItemView;
     }
 }
