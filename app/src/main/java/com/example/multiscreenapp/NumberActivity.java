@@ -3,6 +3,7 @@ package com.example.multiscreenapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,8 +33,8 @@ public class NumberActivity extends AppCompatActivity {
         numbers.add(new word("Ten", "na'aacha"));
 
         ListView listView = (ListView) findViewById(R.id.numberView);
-        wordAdapter numArray = new wordAdapter(this, numbers);
-        listView.setAdapter(numArray);
+        wordAdapter numberArray = new wordAdapter(this, numbers);
+        listView.setAdapter(numberArray);
 
     }
 }
