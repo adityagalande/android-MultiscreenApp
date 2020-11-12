@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,10 +26,13 @@ public class wordAdapter extends ArrayAdapter<word> {
         }
 
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.defaultTextView);
-        defaultTextView.setText(itemPosition.getdefaultTranslation());
+        defaultTextView.setText(itemPosition.getDefaultTranslation());
 
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwokTextView);
         miwokTextView.setText(itemPosition.getMiwokTranslationTranslation());
+
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.list_image);
+        imageView.setImageResource(itemPosition.getImageID());
 
         //return the whole listItemView layout (contaning two textviews)
         return listItemView;
