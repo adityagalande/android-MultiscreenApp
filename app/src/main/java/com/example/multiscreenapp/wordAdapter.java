@@ -32,7 +32,12 @@ public class wordAdapter extends ArrayAdapter<word> {
         miwokTextView.setText(itemPosition.getMiwokTranslationTranslation());
 
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.list_image);
-        imageView.setImageResource(itemPosition.getImageID());
+        if(itemPosition.hasImage()){
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageResource(itemPosition.getImageID());
+        }else {
+            imageView.setVisibility(View.GONE);
+        }
 
         //return the whole listItemView layout (contaning two textviews)
         return listItemView;

@@ -5,7 +5,8 @@ import android.graphics.drawable.Drawable;
 public class word {
     private String defaultTranslation;
     private String miwokTranslation;
-    private int imageID;
+    private int imageID = no_image_view;
+    private static final int no_image_view = -1;
 
     public word(String defaultTranslation, String miwokTranslation) {
         this.defaultTranslation = defaultTranslation;
@@ -27,4 +28,8 @@ public class word {
     }
 
     public int getImageID() { return this.imageID; }
+
+    public boolean hasImage(){
+        return imageID != no_image_view;
+    }
 }
