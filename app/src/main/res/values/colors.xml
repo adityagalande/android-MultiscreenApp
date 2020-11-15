@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#cfd8dc</color>
     <color name="orangr_light">#ff5131</color>
+    <color name="yellow">#ffa000</color>
+    <color name="green">#43a047</color>
+    <color name="purple">#8e24aa</color>
+    <color name="blue">#039be5</color>
 </resources>
