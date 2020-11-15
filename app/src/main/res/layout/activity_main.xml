@@ -29,25 +29,25 @@
                 <TextView
                     android:id="@+id/numbers"
                     android:text="@string/numbers"
-                    android:background="@color/orangr_light"
+                    android:background="@color/yellow"
                     style="@style/menuButtom"/>
 
                 <TextView
                     android:id="@+id/family"
                     android:text="@string/family"
-                    android:background="@color/orangr_light"
+                    android:background="@color/green"
                     style="@style/menuButtom"/>
 
                 <TextView
                     android:id="@+id/colors"
                     android:text="@string/colors"
-                    android:background="@color/orangr_light"
+                    android:background="@color/purple"
                     style="@style/menuButtom" />
 
                 <TextView
                     android:id="@+id/phrases"
                     style="@style/menuButtom"
-                    android:background="@color/orangr_light"
+                    android:background="@color/blue"
                     android:text="@string/phrases"/>
             </LinearLayout>
 
