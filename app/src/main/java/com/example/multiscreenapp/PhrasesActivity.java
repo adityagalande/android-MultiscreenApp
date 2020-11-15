@@ -26,7 +26,7 @@ public class PhrasesActivity extends AppCompatActivity {
         phrases.add(new word("Come here.","әnni'nem"));
 
         ListView listView = (ListView) findViewById(R.id.phrasesview);
-        wordAdapter phraseArray = new wordAdapter(this,phrases);
+        wordAdapter phraseArray = new wordAdapter(this,phrases, R.color.blue);
         listView.setAdapter(phraseArray);
     }
 }
