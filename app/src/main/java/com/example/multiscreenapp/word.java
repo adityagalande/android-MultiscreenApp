@@ -1,7 +1,5 @@
 package com.example.multiscreenapp;
 
-import android.graphics.drawable.Drawable;
-
 public class word {
     private String defaultTranslation;
     private String miwokTranslation;
