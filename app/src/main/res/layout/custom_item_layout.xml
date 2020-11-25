@@ -35,10 +35,12 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/playSound"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        tools:srcCompat="@android:drawable/ic_media_play" />
+        tools:srcCompat="@android:drawable/ic_media_play"
+        android:contentDescription="@string/todo1" />
 </LinearLayout>
 
 
