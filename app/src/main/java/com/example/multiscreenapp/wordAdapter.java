@@ -1,6 +1,7 @@
 package com.example.multiscreenapp;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 
 public class wordAdapter extends ArrayAdapter<word> {
-    private int colorResourceID;
+    private final int colorResourceID;
     public wordAdapter(Activity context, ArrayList<word> words, int colorResourceID) {
         super(context, 0, words);
         this.colorResourceID = colorResourceID;
