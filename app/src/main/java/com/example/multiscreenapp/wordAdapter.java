@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class wordAdapter extends ArrayAdapter<word> {
     private final int colorResourceID;
+
     public wordAdapter(Activity context, ArrayList<word> words, int colorResourceID) {
         super(context, 0, words);
         this.colorResourceID = colorResourceID;
@@ -36,10 +37,10 @@ public class wordAdapter extends ArrayAdapter<word> {
         miwokTextView.setText(itemPosition.getMiwokTranslationTranslation());
 
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.list_image);
-        if(itemPosition.hasImage()){
+        if (itemPosition.hasImage()) {
             imageView.setImageResource(itemPosition.getImageID());
             //imageView.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             imageView.setVisibility(View.GONE);
         }
 

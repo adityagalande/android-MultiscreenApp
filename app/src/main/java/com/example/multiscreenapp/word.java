@@ -28,9 +28,11 @@ public class word {
         return this.miwokTranslation;
     }
 
-    public int getImageID() { return this.imageID; }
+    public int getImageID() {
+        return this.imageID;
+    }
 
-    public boolean hasImage(){
+    public boolean hasImage() {
         return imageID != no_image_view;
     }
 
