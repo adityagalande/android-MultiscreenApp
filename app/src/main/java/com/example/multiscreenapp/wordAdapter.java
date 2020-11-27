@@ -1,7 +1,6 @@
 package com.example.multiscreenapp;
 
 import android.app.Activity;
-import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
