@@ -3,38 +3,65 @@ package com.example.multiscreenapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class NumberActivity extends AppCompatActivity {
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number);
-        ArrayList<word> numbers = new ArrayList<word>();
-        numbers.add(new word("One","lutti",R.drawable.number_one));
-        numbers.add(new word("Two","otiiko",R.drawable.number_two));
-        numbers.add(new word("Three","tolookosu",R.drawable.number_three));
-        numbers.add(new word("Four","oyyisa",R.drawable.number_four));
-        numbers.add(new word("Five","massokka",R.drawable.number_five));
-        numbers.add(new word("Six","temmokka",R.drawable.number_six));
-        numbers.add(new word("Seven","kenekaku",R.drawable.number_seven));
-        numbers.add(new word("Eight","kawinta",R.drawable.number_eight));
-        numbers.add(new word("Nine","wo'e",R.drawable.number_nine));
-        numbers.add(new word("Ten","na'aacha",R.drawable.number_ten));
+        final ArrayList<word> numbers = new ArrayList<word>();
+        numbers.add(new word("One", "lutti", R.drawable.number_one, R.raw.number_one));
+        numbers.add(new word("Two", "otiiko", R.drawable.number_two, R.raw.number_two));
+        numbers.add(new word("Three", "tolookosu", R.drawable.number_three, R.raw.number_three));
+        numbers.add(new word("Four", "oyyisa", R.drawable.number_four, R.raw.number_four));
+        numbers.add(new word("Five", "massokka", R.drawable.number_five, R.raw.number_five));
+        numbers.add(new word("Six", "temmokka", R.drawable.number_six, R.raw.number_six));
+        numbers.add(new word("Seven", "kenekaku", R.drawable.number_seven, R.raw.number_seven));
+        numbers.add(new word("Eight", "kawinta", R.drawable.number_eight, R.raw.number_eight));
+        numbers.add(new word("Nine", "wo'e", R.drawable.number_nine, R.raw.number_nine));
+        numbers.add(new word("Ten", "na'aacha", R.drawable.number_ten, R.raw.number_ten));
 
         ListView listView = (ListView) findViewById(R.id.numberView);
         wordAdapter numberArray = new wordAdapter(this, numbers, R.color.yellow);
         listView.setAdapter(numberArray);
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                word word = numbers.get(position);
+                //It release resources before occupying
+                releaseMediaPlayer();
+                mediaPlayer = MediaPlayer.create(NumberActivity.this, word.getAudioResourceID());
+                mediaPlayer.start();
+
+                //It release resources after occupying
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaPlayer();
+                    }
+                });
+            }
+        });
+    }
+
+
+    private void releaseMediaPlayer(){
+        if(mediaPlayer != null){
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
