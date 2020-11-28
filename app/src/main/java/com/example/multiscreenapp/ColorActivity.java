@@ -14,10 +14,14 @@ public class ColorActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
+
+        //Creat and setUp the audio focus
+
         final ArrayList<word> color = new ArrayList<word>();
         color.add(new word("red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
         color.add(new word("green", "chokokki", R.drawable.color_green, R.raw.color_green));
@@ -36,10 +40,33 @@ public class ColorActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 word word = color.get(position);
+                releaseMediaplayer();
+
                 mediaPlayer = MediaPlayer.create(ColorActivity.this, word.getAudioResourceID());
                 mediaPlayer.start();
+
+
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaplayer();
+                    }
+                });
             }
         });
 
+    }
+
+    protected void onStop() {
+        super.onStop();
+        releaseMediaplayer();
+    }
+
+    private void releaseMediaplayer() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            ;
+            mediaPlayer = null;
+        }
     }
 }

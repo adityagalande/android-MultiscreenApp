@@ -38,9 +38,29 @@ public class PhrasesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 word word = phrases.get(position);
+                releaseMediaplayer();
                 mediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceID());
                 mediaPlayer.start();
+
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaplayer();
+                    }
+                });
             }
         });
+    }
+
+    protected void onStop() {
+        super.onStop();
+        releaseMediaplayer();
+    }
+
+    private void releaseMediaplayer() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
