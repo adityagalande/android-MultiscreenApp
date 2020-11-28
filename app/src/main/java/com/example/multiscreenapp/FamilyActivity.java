@@ -41,8 +41,27 @@ public class FamilyActivity extends AppCompatActivity {
                 word word = family.get(position);
                 mediaPlayer = MediaPlayer.create(FamilyActivity.this, word.getAudioResourceID());
                 mediaPlayer.start();
+
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaplayer();
+                    }
+                });
             }
         });
 
+    }
+
+    protected void onStop() {
+        super.onStop();
+        mediaPlayer.release();
+    }
+
+    private void releaseMediaplayer() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
