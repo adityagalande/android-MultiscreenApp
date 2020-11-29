@@ -22,7 +22,7 @@ public class NumberActivity extends AppCompatActivity {
             if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) {
                 // Pause playback
                 mediaPlayer.pause();
-                mediaPlayer.start();
+                mediaPlayer.seekTo(0);
             } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
                 // Resume playing
                 mediaPlayer.start();
@@ -68,7 +68,7 @@ public class NumberActivity extends AppCompatActivity {
                         // Use the music stream.
                         AudioManager.STREAM_MUSIC,
                         // Request permanent focus.
-                        AudioManager.AUDIOFOCUS_GAIN);
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // We have audio focus now

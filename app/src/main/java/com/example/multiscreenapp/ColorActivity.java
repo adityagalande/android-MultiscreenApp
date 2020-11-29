@@ -2,6 +2,8 @@ package com.example.multiscreenapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,24 @@ import java.util.ArrayList;
 public class ColorActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
+    private AudioManager audioManager;
+
+    AudioManager.OnAudioFocusChangeListener AudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) {
+                // Pause playback
+                mediaPlayer.pause();
+                mediaPlayer.seekTo(0);
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                // Resume playing
+                mediaPlayer.start();
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                //Cleanup resource
+                releaseMediaplayer();
+            }
+        }
+    };
 
 
     @Override
@@ -20,7 +40,8 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
-        //Creat and setUp the audio focus
+        //Create and setUp the audio focus
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<word> color = new ArrayList<word>();
         color.add(new word("red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
@@ -42,19 +63,28 @@ public class ColorActivity extends AppCompatActivity {
                 word word = color.get(position);
                 releaseMediaplayer();
 
-                mediaPlayer = MediaPlayer.create(ColorActivity.this, word.getAudioResourceID());
-                mediaPlayer.start();
+                int result = audioManager.requestAudioFocus(AudioFocusChangeListener,
+                        // Use the music stream.
+                        AudioManager.STREAM_MUSIC,
+                        // Request permanent focus.
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    // We have audio focus now
+
+                    mediaPlayer = MediaPlayer.create(ColorActivity.this, word.getAudioResourceID());
+                    mediaPlayer.start();
 
 
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        releaseMediaplayer();
-                    }
-                });
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            releaseMediaplayer();
+                        }
+                    });
+                }
             }
         });
-
     }
 
     protected void onStop() {
@@ -65,8 +95,9 @@ public class ColorActivity extends AppCompatActivity {
     private void releaseMediaplayer() {
         if (mediaPlayer != null) {
             mediaPlayer.release();
-            ;
+
             mediaPlayer = null;
+            audioManager.abandonAudioFocus(AudioFocusChangeListener);
         }
     }
 }

@@ -21,7 +21,7 @@ public class PhrasesActivity extends AppCompatActivity {
 
         ArrayList<word> phrases = new ArrayList<word>();
         phrases.add(new word("What is your name?", "minto wuksus", R.raw.phrase_what_is_your_name));
-        phrases.add(new word("What is your name?", "tinnә oyaase'nә", R.raw.phrase_what_is_your_name));
+        phrases.add(new word("Where you are going?", "tinnә oyaase'nә", R.raw.phrase_where_are_you_going));
         phrases.add(new word("My name is...", "oyaaset...", R.raw.phrase_my_name_is));
         phrases.add(new word("How are you feeling?", "michәksәs?", R.raw.phrase_how_are_you_feeling));
         phrases.add(new word("I’m feeling good.", "kuchi achit", R.raw.phrase_im_feeling_good));
