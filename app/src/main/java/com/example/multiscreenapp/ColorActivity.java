@@ -40,6 +40,8 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Create and setUp the audio focus
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 

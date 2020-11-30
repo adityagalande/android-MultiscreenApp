@@ -38,6 +38,8 @@ public class NumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<word> numbers = new ArrayList<word>();

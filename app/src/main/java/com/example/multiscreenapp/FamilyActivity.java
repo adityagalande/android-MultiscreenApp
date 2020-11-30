@@ -38,6 +38,9 @@ public class FamilyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Create and setUp the audio focus
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 

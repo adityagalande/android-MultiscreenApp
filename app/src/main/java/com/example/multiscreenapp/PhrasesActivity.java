@@ -38,6 +38,9 @@ public class PhrasesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Get audio focus by calling this
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
