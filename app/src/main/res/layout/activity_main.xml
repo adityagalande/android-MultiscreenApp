@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,29 +28,29 @@
 
                 <TextView
                     android:id="@+id/numbers"
-                    android:text="@string/numbers"
+                    style="@style/menuButtom"
                     android:background="@color/yellow"
-                    style="@style/menuButtom"/>
+                    android:text="@string/numbers" />
 
                 <TextView
                     android:id="@+id/family"
-                    android:text="@string/family"
+                    style="@style/menuButtom"
                     android:background="@color/green"
-                    style="@style/menuButtom"/>
+                    android:text="@string/family" />
 
                 <TextView
                     android:id="@+id/colors"
-                    android:text="@string/colors"
+                    style="@style/menuButtom"
                     android:background="@color/purple"
-                    style="@style/menuButtom" />
+                    android:text="@string/colors" />
 
                 <TextView
                     android:id="@+id/phrases"
                     style="@style/menuButtom"
                     android:background="@color/blue"
-                    android:text="@string/phrases"/>
+                    android:text="@string/phrases" />
             </LinearLayout>
 
         </RelativeLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

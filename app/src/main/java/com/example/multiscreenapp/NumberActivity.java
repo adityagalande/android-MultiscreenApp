@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class NumberActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
@@ -38,11 +39,11 @@ public class NumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        final ArrayList<word> numbers = new ArrayList<word>();
+        final ArrayList<word> numbers = new ArrayList<>();
         numbers.add(new word("One", "lutti", R.drawable.number_one, R.raw.number_one));
         numbers.add(new word("Two", "otiiko", R.drawable.number_two, R.raw.number_two));
         numbers.add(new word("Three", "tolookosu", R.drawable.number_three, R.raw.number_three));
