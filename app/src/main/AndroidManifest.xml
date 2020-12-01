@@ -9,14 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MultiScreenApp">
-        <activity android:name=".PhrasesActivity"
-            android:label="@string/phrases"/>
-        <activity android:name=".ColorActivity"
-            android:label="@string/colors"/>
-        <activity android:name=".FamilyActivity"
-            android:label="@string/family"/>
-        <activity android:name=".NumberActivity"
-            android:label="@string/numbers"/>
+        <activity
+            android:name=".PhrasesActivity"
+            android:label="@string/phrases"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ColorActivity"
+            android:label="@string/colors"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".FamilyActivity"
+            android:label="@string/family"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".NumberActivity"
+            android:label="@string/numbers"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
