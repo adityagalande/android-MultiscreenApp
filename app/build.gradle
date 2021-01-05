@@ -4,11 +4,11 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.example.multiscreenapp"
-        minSdkVersion 22
+        minSdkVersion 15
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
